@@ -7,14 +7,14 @@ function Features() {
   return (
     <div className="h-full mt-20 mx-auto p-4 w-full">
       <div className="flex items-center justify-center mb-10 md:mb-32">
-        <h1 className="text-5xl font-bold text-black">
+        <h1 className="text-4xl md:text-5xl font-bold text-black">
           Running a business has never been easier.
         </h1>
       </div>
 
       <div className="flex flex-col lg:flex-row justify-center items-start">
         <div className="flex-1 flex-start flex-col space-y-8 w-full ">
-          <h1 className="text-4xl leading-[52px] font-bold w-full text-black">
+          <h1 className="text-2xl md:text-4xl leading-sm md:leading-[52px] font-bold w-full text-black">
             You do the business, <br className="sm:block hidden" />
             we&apos;ll handle the development.
           </h1>
@@ -24,7 +24,7 @@ function Features() {
             finish. As well as monitoring and optimizing your campaign,
             advertisments, and social media.{" "}
           </p>
-          <Link href="/" className="flex">
+          <Link href="/" className="hidden lg:flex">
             <btn className="flex items-center hover:scale-105 transition duration-200 ease-in-out hover:text-gray-200 hover:cursor-pointer rounded-lg py-2 px-8 bg-[#5865F2] shadow-lg text-white gap-2">
               <p>Get Started </p>
               <AiOutlineArrowRight></AiOutlineArrowRight>
@@ -32,7 +32,7 @@ function Features() {
           </Link>
         </div>
 
-        <div className="flex-1 flex-col justify-center items-center md:ml-10 ml-0 mt-10 md:mt-0 space-y-6 ">
+        <div className="flex-1 flex-col justify-center items-center md:ml-10 ml-0 mt-10 lg:mt-0 space-y-6 ">
           <div className="flex gap-x-8">
             <div className="hover:scale-105 rounded-lg bg-[#5865F2] shadow-xl text-white flex flex-row items-center justify-center px-5 h-16">
               <BsMegaphone size={"24px"}></BsMegaphone>
@@ -71,7 +71,15 @@ function Features() {
               </p>
             </div>
           </div>
+
+          <Link href="/" className="flex lg:hidden">
+            <btn className="flex items-center hover:scale-105 transition duration-200 ease-in-out hover:text-gray-200 hover:cursor-pointer rounded-lg py-2 px-8 bg-[#5865F2] shadow-lg text-white gap-2">
+              <p>Get Started </p>
+              <AiOutlineArrowRight></AiOutlineArrowRight>
+            </btn>
+          </Link>
         </div>
+
       </div>
     </div>
   );

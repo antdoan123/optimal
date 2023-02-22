@@ -26,21 +26,21 @@ const Footer = () => {
             <div className=' text-center py-2'>
             <p>Follow Our Social Media!</p>
             <a
-                href="https://www.instagram.com/kingsbartendingservices/"
+                href="https://www.instagram.com/eeesshhmedia/"
                 target="_blank"
                 rel="noreferrer"
                 className='inline-flex  hover:scale-105 duration-200 pt-2'>
             <AiOutlineInstagram size={24} ></AiOutlineInstagram>
             </a>
             <a
-                href="https://www.tiktok.com/@kingsbartendingservices"
+                href="https://www.instagram.com/eeesshhmedia/"
                 target="_blank"
                 rel="noreferrer"
                 className='inline-flex  hover:scale-105 duration-200 pl-2'>
             <FaTiktok size={24}></FaTiktok>
             </a>
             <a
-                href="https://www.facebook.com/kingsbartendingservices/"
+                href="https://www.instagram.com/eeesshhmedia/"
                 target="_blank"
                 rel="noreferrer"
                 className='inline-flex  hover:scale-105 duration-200 pl-2'>
