@@ -1,7 +1,7 @@
 import { motion, AnimatePresence } from "framer-motion"
 import { animated, useSpring } from 'react-spring';
 import Link from 'next/link'
-
+import { useState, useEffect } from "react";
 
 const calc = (x, y) => [
     -(y - window.innerHeight / 2) / 200,
@@ -12,12 +12,51 @@ const calc = (x, y) => [
     `perspective(200px) rotateX(${x}deg) rotateY(${y}deg) scale(${s})`;
 
 function Hero() {
+  const [loopNum, setLoopNum] = useState(0);
+  const [isDeleting, setIsDeleting] = useState(false);
+  const [text, setText] = useState('');
+  const [delta, setDelta] = useState(300 - Math.random() * 100);
+  const [index, setIndex] = useState(1);
+  const toRotate = [ "Businesses", "Influencers", "Brands" ];
+  const period = 1000;
 
     const [props, set] = useSpring(() => ({
         xys: [0, 0, 1],
         config: { mass: 2, tension: 350, friction: 40 },
       }));
 
+      useEffect(() => {
+        let ticker = setInterval(() => {
+          tick();
+        }, delta);
+    
+        return () => { clearInterval(ticker) };
+      }, [text])
+    
+      const tick = () => {
+        let i = loopNum % toRotate.length;
+        let fullText = toRotate[i];
+        let updatedText = isDeleting ? fullText.substring(0, text.length - 1) : fullText.substring(0, text.length + 1);
+    
+        setText(updatedText);
+    
+        if (isDeleting) {
+          setDelta(prevDelta => prevDelta / 2);
+        }
+    
+        if (!isDeleting && updatedText === fullText) {
+          setIsDeleting(true);
+          setIndex(prevIndex => prevIndex - 1);
+          setDelta(period);
+        } else if (isDeleting && updatedText === '') {
+          setIsDeleting(false);
+          setLoopNum(loopNum + 1);
+          setIndex(1);
+          setDelta(500);
+        } else {
+          setIndex(prevIndex => prevIndex + 1);
+        }
+      }
   return (
     <div className='h-screen mt-20 mx-auto p-4 w-full '>
           <motion.div
@@ -32,7 +71,7 @@ function Hero() {
               <h1 className='flex-1 font-semibold text-5xl md:text-6xl lg:leading-[62px] leading-[52px]'>
                 The Leading <br className='sm:block hidden'/> {" "}
                 Social Media Resources <br className='sm:block hidden'/>
-                For Businesses
+                For <span className="txt-rotate"><span className="wrap">{text}</span></span>
               </h1>
             <div className='flex w-[100%] md:w-[50%]'>
               <p className='flex-1 text-xl mt-10 '>EeesshhMedia provide you a one stop platform to Develop your Website, Automated Hosting, Optimize SEO, and Provide Social Media Marketing</p>
