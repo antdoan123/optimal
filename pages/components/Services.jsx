@@ -71,7 +71,7 @@ function Services() {
             </h1>
             <p className="flex text-lg md:text-xl text-neutral-500 max-w-[470px]">
               EeesshhMedia designs, develops and deploys websites. They first
-              understand the client's requirements, create an intuitive design,
+              understand the client&apos;s requirements, create an intuitive design,
               and use advanced technologies for development. Rigorous testing is
               done before deployment, and EeesshhMedia collaborates with the
               client throughout the process to ensure a high-quality and
@@ -128,8 +128,8 @@ function Services() {
               EeesshhMedia optimizes website performance and speed by using the
               latest web technologies and industry best practices. They conduct
               thorough research to identify relevant keywords and phrases and
-              integrate them into the website's content, meta descriptions, and
-              titles. EeesshhMedia also optimizes the website's structure and
+              integrate them into the website&apos;s content, meta descriptions, and
+              titles. EeesshhMedia also optimizes the website&apos;s structure and
               content to improve search engine ranking, helping clients reach
               their target audience and achieve their online goals.
             </p>
