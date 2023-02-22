@@ -16,7 +16,7 @@ function Features() {
         <div className="flex-1 flex-start flex-col space-y-8 w-full ">
           <h1 className="text-4xl leading-[52px] font-bold w-full text-black">
             You do the business, <br className="sm:block hidden" />
-            we'll handle the development.
+            we&apos;ll handle the development.
           </h1>
           <p className="flex max-w-[470px] text-lg md:text-xl text-neutral-500">
             With the right social media agency, you can focus on your business,
