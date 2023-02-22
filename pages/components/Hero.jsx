@@ -2,7 +2,7 @@ import Head from 'next/head'
 import Image from 'next/image'
 import { Inter } from '@next/font/google'
 import styles from '@/styles/Home.module.css'
-import Typical from 'react-typical'
+
 import { animated, useSpring } from 'react-spring';
 import Link from 'next/link'
 
@@ -29,11 +29,7 @@ function Hero() {
               <h1 className='flex-1 font-semibold text-5xl md:text-6xl lg:leading-[62px] leading-[52px]'>
                 The Leading <br className='sm:block hidden'/> {" "}
                 Social Media Resources <br className='sm:block hidden'/>
-                <Typical
-                  steps={['For Brands', 1500, 'For Businesses', 1500, 'For Influencers', 1500, 'For Agencies', 1500]}
-                  loop={Infinity}
-                  wrapper="p"
-                />
+                For Businesses
               </h1>
             <div className='flex w-[100%] md:w-[50%]'>
               <p className='flex-1 text-xl mt-10 '>EeesshhMedia provide you a one stop platform to Develop your Website, Automated Hosting, Optimize SEO, and Provide Social Media Marketing</p>
