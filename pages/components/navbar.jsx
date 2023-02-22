@@ -1,7 +1,7 @@
 import React from 'react'
 import { Menu, Transition } from '@headlessui/react'
 import Link from 'next/link'
-import MenuLink from './menuLink'
+import MenuLink from './MenuLink'
 import { FaBars } from "react-icons/fa";
 
 function Navbar() {
