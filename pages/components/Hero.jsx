@@ -1,8 +1,4 @@
-import Head from 'next/head'
-import Image from 'next/image'
-import { Inter } from '@next/font/google'
-import styles from '@/styles/Home.module.css'
-
+import { motion, AnimatePresence } from "framer-motion"
 import { animated, useSpring } from 'react-spring';
 import Link from 'next/link'
 
@@ -24,6 +20,13 @@ function Hero() {
 
   return (
     <div className='h-screen mt-20 mx-auto p-4 w-full '>
+          <motion.div
+            as="div"
+            initial={{ y: 10, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.5 }}
+            exit={{ y: 10, opacity: 0 }}
+          >     
         <div className="flex flex-col h-full text-white justify-center items-center text-center">
           {/* dashboard */}
               <h1 className='flex-1 font-semibold text-5xl md:text-6xl lg:leading-[62px] leading-[52px]'>
@@ -55,6 +58,7 @@ function Hero() {
 
 
         </div>
+        </motion.div> 
     </div>
   )
 }
