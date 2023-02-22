@@ -7,6 +7,7 @@ import Link from 'next/link'
 import Features from './components/Features'
 import Hero from './components/Hero'
 import Contact from './components/Contact'
+import Services from './components/Services';
 
 
 const inter = Inter({ subsets: ['latin'] })
@@ -38,6 +39,7 @@ export default function Home() {
       
         {/* Features */}
         <Features></Features>
+        <Services></Services>
         <Contact></Contact>
         {/* Features */}
       

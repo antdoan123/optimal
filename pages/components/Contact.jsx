@@ -1,6 +1,6 @@
 import React from 'react'
 import { useRef, useState } from 'react';
-
+import { motion } from 'framer-motion'
 
 const Contact = () => {
     const [sent, setSent] = useState(false)
@@ -31,7 +31,13 @@ const Contact = () => {
 
     }
   return (
-    <div className='h-full mt-20 mx-auto p-4 w-full'>
+    <motion.div
+    initial={{y: 100, opacity: 0 }}
+    whileInView={{y:0, opacity: 1 }}
+    viewport={{ once: true }}
+    transition={{ duration: 1 }}
+    className='h-full mt-20 mx-auto p-4 w-full'
+    >
         <div className='flex flex-col items-center justify-center'>
             <h1 className='border-b-2 border-[#5865F2] py-4 text-2xl font-bold text-black'>Contact Us</h1>
             <p className='mt-4 text-md text-center text-neutral-500'>WE WILL BE GLAD TO HEAR FROM YOU ABOUT A NEW EXCITING PROJECT</p>
@@ -45,7 +51,7 @@ const Contact = () => {
                 </a>
                 <p className={`pt-1 text-[#5865F2] italic ${sent ? '' : 'hidden'}`}>{"Sent! We'll get back to you shortly."}</p>
             </form>        
-    </div>
+    </motion.div>
   )
 }
 

@@ -2,17 +2,30 @@ import React from "react";
 import { BsMegaphone, BsPencil } from "react-icons/bs";
 import { AiOutlineTool, AiOutlineArrowRight } from "react-icons/ai";
 import Link from "next/link";
+import { motion } from "framer-motion"
 
 function Features() {
   return (
     <div className="h-full mt-20 mx-auto p-4 w-full">
-      <div className="flex items-center justify-center mb-10 md:mb-32">
+      <motion.div
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 1 }}
+                  className="flex items-center justify-center mb-10 md:mb-32"
+            >
         <h1 className="text-4xl md:text-5xl font-bold text-black">
           Running a business has never been easier.
         </h1>
-      </div>
-
-      <div className="flex flex-col lg:flex-row justify-center items-start">
+      </motion.div>
+      
+      <motion.div
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 1 }}
+                  className="flex flex-col lg:flex-row justify-center items-start"
+                  >
         <div className="flex-1 flex-start flex-col space-y-8 w-full ">
           <h1 className="text-2xl md:text-4xl leading-sm md:leading-[52px] font-bold w-full text-black">
             You do the business, <br className="sm:block hidden" />
@@ -80,7 +93,7 @@ function Features() {
           </Link>
         </div>
 
-      </div>
+      </motion.div>
     </div>
   );
 }
