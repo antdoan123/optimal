@@ -1,6 +1,6 @@
 import React from "react";
-import { BsMegaphone, BsPencil } from "react-icons/Bs";
-import { AiOutlineTool, AiOutlineArrowRight } from "react-icons/Ai";
+import { BsMegaphone, BsPencil } from "react-icons/bs";
+import { AiOutlineTool, AiOutlineArrowRight } from "react-icons/ai";
 import Link from "next/link";
 
 function Features() {
