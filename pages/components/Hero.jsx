@@ -74,7 +74,7 @@ function Hero() {
                 For <span className="txt-rotate"><span className="wrap">{text}</span></span>
               </h1>
             <div className='flex w-[100%] md:w-[50%]'>
-              <p className='flex-1 text-xl mt-10 '>EeesshhMedia provide you a one stop platform to Develop your Website, Automated Hosting, Optimize SEO, and Provide Social Media Marketing</p>
+              <p className='flex-1 text-xl mt-10 '>Eeesshh Media provide you a one stop platform to Develop your Website, Automated Hosting, Optimize SEO, and Provide Social Media Marketing</p>
             </div>
             <Link href="/">
               <btn className='flex hover:scale-105 transition duration-200 ease-in-out hover:text-gray-200 hover:cursor-pointer rounded-lg py-2 px-8 bg-white mt-10 shadow-lg'><span className='text-[#5865F2] font-bold text-2xl'>Get Started</span></btn>

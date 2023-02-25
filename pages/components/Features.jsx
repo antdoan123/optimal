@@ -6,7 +6,7 @@ import { motion } from "framer-motion"
 
 function Features() {
   return (
-    <div className="h-full mt-20 mx-auto p-4 w-full">
+    <div name="about" className="h-full mt-20 mx-auto p-4 w-full">
       <motion.div
                   initial={{ opacity: 0 }}
                   whileInView={{ opacity: 1 }}

@@ -18,7 +18,7 @@ function Services() {
   }));
 
   return (
-    <div className="h-full mt-20 mx-auto p-4 w-full">
+    <div name='services' className="h-full mt-20 mx-auto p-4 w-full">
       <motion.div
         initial={{opacity: 0 }}
         whileInView={{opacity: 1 }}
@@ -70,10 +70,10 @@ function Services() {
               Starting with website development
             </h1>
             <p className="flex text-lg md:text-xl text-neutral-500 max-w-[470px]">
-              EeesshhMedia designs, develops and deploys websites. They first
+              Eeesshh Media designs, develops and deploys websites. They first
               understand the client&apos;s requirements, create an intuitive design,
               and use advanced technologies for development. Rigorous testing is
-              done before deployment, and EeesshhMedia collaborates with the
+              done before deployment, and Eeesshh Media collaborates with the
               client throughout the process to ensure a high-quality and
               customized end product.
             </p>
@@ -125,11 +125,11 @@ function Services() {
               Optimizing Speed and Performances
             </h1>
             <p className="flex text-lg md:text-xl text-neutral-500 max-w-[470px]">
-              EeesshhMedia optimizes website performance and speed by using the
+              Eeesshh Media optimizes website performance and speed by using the
               latest web technologies and industry best practices. They conduct
               thorough research to identify relevant keywords and phrases and
               integrate them into the website&apos;s content, meta descriptions, and
-              titles. EeesshhMedia also optimizes the website&apos;s structure and
+              titles. Eeesshh Media also optimizes the website&apos;s structure and
               content to improve search engine ranking, helping clients reach
               their target audience and achieve their online goals.
             </p>

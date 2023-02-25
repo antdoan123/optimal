@@ -36,16 +36,17 @@ const Contact = () => {
     whileInView={{y:0, opacity: 1 }}
     viewport={{ once: true }}
     transition={{ duration: 1 }}
+    name='contact'
     className='h-full mt-20 mx-auto p-4 w-full'
     >
         <div className='flex flex-col items-center justify-center'>
-            <h1 className='border-b-2 border-[#5865F2] py-4 text-2xl font-bold text-black'>Contact Us</h1>
-            <p className='mt-4 text-md text-center text-neutral-500'>WE WILL BE GLAD TO HEAR FROM YOU ABOUT A NEW EXCITING PROJECT</p>
+            <h1 className='border-b-2 border-[#5865F2] py-4 text-2xl font-bold text-black'>Book a Call</h1>
+            <p className='mt-4 text-md text-center text-neutral-500'>SEE IF WE ARE A GREAT FIT FOR YOU</p>
         </div>
         <form className='max-w-[600px] m-auto pt-4 text-black flex flex-col gap-2' onSubmit={handleSubmit}>
                 <input className=' border border-[#5865F2] p-3 rounded-lg' ref={senderNameRef} type="text" placeholder='Name'></input>
-                <input className='border border-[#5865F2] p-3 rounded-lg' ref={senderEmailRef} type="email" placeholder='Email'></input>
-            <textarea className='border border-[#5865F2] p-3 w-full rounded-lg' ref={messageRef} col="30" rows="10" placeholder="Message"></textarea>
+                <input className='border border-[#5865F2] p-3 rounded-lg' ref={senderEmailRef} type="email" placeholder='Phone/Email'></input>
+            <textarea className='border border-[#5865F2] p-3 w-full rounded-lg' ref={messageRef} col="30" rows="10" placeholder="What Service are you looking for?"></textarea>
                 <a href="mailto:antdoan123@gmail.com" target="_blank" rel="noreferrer">
                     <button className='rounded-md p-3 w-full mt-2 bg-[#5865F2] text-white font-bold text-xl shadow-lg'>Submit</button>
                 </a>

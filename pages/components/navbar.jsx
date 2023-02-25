@@ -1,26 +1,29 @@
 import React from 'react'
 import { Menu, Transition } from '@headlessui/react'
-import Link from 'next/link'
+
 import MenuLink from './MenuLink'
 import { FaBars } from "react-icons/fa";
+import { Link } from 'react-scroll'
 
 function Navbar() {
   return (
     <div className="text-right flex justify-between max-w-7xl mx-auto text-white px-4 sm:px-8 pt-4 pb-2 md:pt-6 md:pb-4 ">
       <Link href="/" >
-        <h1 className='lg:flex text-2xl hover:cursor-pointer '>EeesshhMedia</h1>
+        <h1 className='lg:flex text-2xl hover:cursor-pointer '>Eeesshh Media</h1>
       </Link>
       <div className='justify-between items-center gap-10 text-md lg:text-lg hidden lg:flex'>
           <Link href="/">
             <h1 className='hover:scale-105 transition duration-200 ease-in-out hover:text-gray-300 hover:cursor-pointer'>Home</h1>
           </Link>
-          <Link href="/">
-            <h1 className='hover:scale-105 transition duration-200 ease-in-out hover:text-gray-300 hover:cursor-pointer'>Work</h1>
-          </Link>
-          <Link href="/">
+          <Link to={'about'} smooth duration={500}>
             <h1 className='hover:scale-105 transition duration-200 ease-in-out hover:text-gray-300 hover:cursor-pointer'>About</h1>
           </Link>
-
+          <Link to={'services'} smooth duration={500}>
+            <h1 className='hover:scale-105 transition duration-200 ease-in-out hover:text-gray-300 hover:cursor-pointer'>Services</h1>
+          </Link>
+          <Link to={'contact'} smooth duration={500}>
+            <h1 className='hover:scale-105 transition duration-200 ease-in-out hover:text-gray-300 hover:cursor-pointer'>Contact</h1>
+          </Link>
 
       </div>
       <Menu as="div" className="lg:hidden relative w-52">
@@ -34,6 +37,7 @@ function Navbar() {
                         <MenuLink pageName="Home" link="/" ></MenuLink>
                         <MenuLink pageName="Work" link="/"></MenuLink>
                         <MenuLink pageName="About" link="/"></MenuLink>
+                        <MenuLink pageName="Contact" link="/"></MenuLink>
                     </div>
                 </Menu.Items>
         </Menu>
