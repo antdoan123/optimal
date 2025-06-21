@@ -14,7 +14,7 @@ export default function About() {
             </p>
             <p className="text-gray-600 mb-6 leading-relaxed">
               Founded with the mission to create a welcoming environment where members of all fitness levels can thrive,
-              we've built a space where physical health and mental wellbeing go hand in hand.
+              we&apos;ve built a space where physical health and mental wellbeing go hand in hand.
             </p>
 
             <div className="space-y-4 mb-6">

@@ -22,7 +22,7 @@ export default function Hero() {
           Train Smarter. <br /> Live Stronger.
         </h1>
         <p className="text-lg md:text-xl mb-12 text-white/90 max-w-3xl mx-auto">
-          Vineland's premier 24/7 fitness center with state-of-the-art equipment and expert guidance to help you achieve
+          Vineland&apos;s premier 24/7 fitness center with state-of-the-art equipment and expert guidance to help you achieve
           your fitness goals.
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">

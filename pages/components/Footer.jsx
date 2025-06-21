@@ -12,7 +12,7 @@ export default function Footer() {
               <span className="text-2xl font-extrabold tracking-widest text-white">OPTIMAL</span>
             </Link>
             <p className="text-gray-400 mb-6 max-w-md leading-relaxed">
-              Vineland's premier 24/7 fitness center, dedicated to helping you achieve your goals in a dynamic and
+              Vineland&apos;s premier 24/7 fitness center, dedicated to helping you achieve your goals in a dynamic and
               supportive environment.
             </p>
             <div className="space-y-1 text-sm text-gray-400">
