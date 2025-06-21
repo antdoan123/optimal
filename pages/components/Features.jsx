@@ -1,101 +1,91 @@
-import React from "react";
-import { BsMegaphone, BsPencil } from "react-icons/bs";
-import { AiOutlineTool, AiOutlineArrowRight } from "react-icons/ai";
-import Link from "next/link";
-import { motion } from "framer-motion"
+'use client';
+import Image from "next/image";
+import { motion } from "framer-motion";
 
-function Features() {
+const facilities = [
+  {
+    title: "Modern Equipment",
+    description: "High-quality machines for strength and cardio training",
+    image: "/placeholder.svg?height=600&width=800",
+  },
+  {
+    title: "Swimming Pool",
+    description: "Clean, well-maintained pool for lap swimming and aquatic fitness",
+    image: "/placeholder.svg?height=600&width=800",
+  },
+  {
+    title: "Recovery Area",
+    description: "Dedicated space for stretching and post-workout recovery",
+    image: "/placeholder.svg?height=600&width=800",
+  },
+  {
+    title: "Sports Courts",
+    description: "Professional courts for tennis, basketball, and racquetball",
+    image: "/placeholder.svg?height=600&width=800",
+  },
+];
+
+export default function Feature() {
   return (
-    <div name="about" className="h-full mt-20 mx-auto p-4 w-full">
-      <motion.div
-                  initial={{ opacity: 0 }}
-                  whileInView={{ opacity: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 1 }}
-                  className="flex items-center justify-center mb-10 md:mb-32"
-            >
-        <h1 className="text-4xl md:text-5xl font-bold text-black">
-          Running a business has never been easier.
-        </h1>
-      </motion.div>
-      
-      <motion.div
-                  initial={{ opacity: 0 }}
-                  whileInView={{ opacity: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 1 }}
-                  className="flex flex-col lg:flex-row justify-center items-start"
-                  >
-        <div className="flex-1 flex-start flex-col space-y-8 w-full ">
-          <h1 className="text-2xl md:text-4xl leading-sm md:leading-[52px] font-bold w-full text-black">
-            You do the business, <br className="sm:block hidden" />
-            we&apos;ll handle the development.
-          </h1>
-          <p className="flex max-w-[470px] text-lg md:text-xl text-neutral-500">
-            With the right social media agency, you can focus on your business,
-            while we design, develope, and host your website from scratch to
-            finish. As well as monitoring and optimizing your campaign,
-            advertisments, and social media.{" "}
+    <section id="facilities" className="w-full py-20 bg-white">
+      <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Section Header */}
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+          viewport={{ once: true }}
+          className="mb-12 text-center"
+        >
+          <h2 className="text-3xl font-bold tracking-wide mb-4 text-gray-900">Our Facilities</h2>
+          <p className="text-gray-600 max-w-2xl mx-auto">
+            Optimal Gym offers well-designed spaces that inspire performance and recovery. Each area is thoughtfully
+            equipped to support your fitness journey.
           </p>
-          <Link href="/" className="hidden lg:flex">
-            <btn className="flex items-center hover:scale-105 transition duration-200 ease-in-out hover:text-gray-200 hover:cursor-pointer rounded-lg py-2 px-8 bg-[#5865F2] shadow-lg text-white gap-2">
-              <p>Get Started </p>
-              <AiOutlineArrowRight></AiOutlineArrowRight>
-            </btn>
-          </Link>
+        </motion.div>
+
+        {/* Facility Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {facilities.map((facility, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              viewport={{ once: true }}
+              className="relative group overflow-hidden rounded-lg shadow-md w-full"
+            >
+              <div className="aspect-video relative w-full">
+                <Image
+                  src={facility.image}
+                  alt={facility.title}
+                  fill
+                  className="object-cover transition-transform duration-500 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-black/30 group-hover:bg-black/40 transition duration-300" />
+                <div className="absolute inset-0 p-6 flex flex-col justify-end">
+                  <h3 className="text-xl font-semibold text-white mb-1">{facility.title}</h3>
+                  <p className="text-sm text-white/90">{facility.description}</p>
+                </div>
+              </div>
+            </motion.div>
+          ))}
         </div>
 
-        <div className="flex-1 flex-col justify-center items-center md:ml-10 ml-0 mt-10 lg:mt-0 space-y-6 ">
-          <div className="flex gap-x-8">
-            <div className="hover:scale-105 rounded-lg bg-[#5865F2] shadow-xl text-white flex flex-row items-center justify-center px-5 h-16">
-              <BsMegaphone size={"24px"}></BsMegaphone>
-            </div>
-            <div className="flex flex-col text-lg md:text-xl">
-              <h1 className="font-bold text-black">Lead Generation</h1>
-              <p className="text-lg text-neutral-500">
-                We generate leads, reach target audience, optimize campaigns for
-                max performance, ROI to drive conversions for businesses.
-              </p>
-            </div>
-          </div>
-
-          <div className="flex gap-x-8">
-            <div className="hover:scale-105 rounded-lg bg-[#5865F2] shadow-xl text-white flex items-center justify-center px-5 h-16">
-              <AiOutlineTool size={"24px"}></AiOutlineTool>
-            </div>
-            <div className="flex flex-col text-lg md:text-xl">
-              <h1 className="font-bold text-black">Web Development</h1>
-              <p className="text-lg text-neutral-500">
-                Our web designers provide custom websites that effectively
-                showcase your brand, meet business needs, and drive results.
-              </p>
-            </div>
-          </div>
-
-          <div className="flex gap-x-8">
-            <div className="hover:scale-105 rounded-lg bg-[#5865F2] shadow-xl text-white flex items-center justify-center px-5 h-16">
-              <BsPencil size={"24px"}></BsPencil>
-            </div>
-            <div className="flex flex-col text-lg md:text-xl">
-              <h1 className="font-bold text-black">SEO Optimization</h1>
-              <p className="text-lg text-neutral-500">
-                We increase website traffic and visibility through SEO services
-                that strategically optimize keywords and content.
-              </p>
-            </div>
-          </div>
-
-          <Link href="/" className="flex lg:hidden">
-            <btn className="flex items-center hover:scale-105 transition duration-200 ease-in-out hover:text-gray-200 hover:cursor-pointer rounded-lg py-2 px-8 bg-[#5865F2] shadow-lg text-white gap-2">
-              <p>Get Started </p>
-              <AiOutlineArrowRight></AiOutlineArrowRight>
-            </btn>
-          </Link>
-        </div>
-
-      </motion.div>
-    </div>
+        {/* Footer Text */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, ease: "easeOut", delay: 0.3 }}
+          viewport={{ once: true }}
+          className="mt-12 text-center"
+        >
+          <p className="text-gray-600 max-w-2xl mx-auto">
+            Our facilities are designed to provide a comfortable and motivating environment for members of all fitness
+            levels.
+          </p>
+        </motion.div>
+      </div>
+    </section>
   );
 }
-
-export default Features;

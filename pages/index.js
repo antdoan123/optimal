@@ -7,7 +7,12 @@ import Link from 'next/link'
 import Features from './components/Features'
 import Hero from './components/Hero'
 import Contact from './components/Contact'
-import Services from './components/Services';
+import Services from './components/Classes';
+import Navbar from './components/navbar';
+import Footer from './components/Footer';
+import List from './components/about';
+import About from './components/about';
+import Classes from './components/Classes';
 
 
 const inter = Inter({ subsets: ['latin'] })
@@ -29,20 +34,19 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>Eeesshh Media</title>
+        <title>Opitmal Gym</title>
         <meta name="description" content="Your next leading social media resources" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className='flex flex-col justify-center items-center text-black w-full max-w-7xl mx-auto'>
+      <main className='flex flex-col justify-center items-center bg-white w-full mx-auto'>
 
-      
-        {/* Features */}
-        <Features></Features>
-        <Services></Services>
-        <Contact></Contact>
-        {/* Features */}
-      
+      <Navbar/>
+      <Hero/>
+      <About/>
+        <Features/>
+        <Classes/>
+        <Footer/>
       </main>
     </>
   )

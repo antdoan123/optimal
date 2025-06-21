@@ -1,59 +1,113 @@
-import React from 'react'
-import { useRef, useState } from 'react';
-import { motion } from 'framer-motion'
+import Image from "next/image"
+import Link from "next/link"
+import { Button } from "@/components/ui/button"
+import { Input } from "@/components/ui/input"
+import { Textarea } from "@/components/ui/textarea"
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import {
+  Facebook,
+  Instagram,
+  Twitter,
+  MapPin,
+  Clock,
+  Phone,
+  Mail,
+  Wrench,
+  Car,
+  PenToolIcon as Tool,
+  CheckCircle,
+  ChevronRight,
+  Star,
+} from "lucide-react"
 
-const Contact = () => {
-    const [sent, setSent] = useState(false)
-
-    const senderNameRef = useRef("")
-    const senderEmailRef = useRef("")
-    const messageRef = useRef("")
- 
-    const handleSubmit = async (e) => {
-        e.preventDefault()
-        const emailBody = {
-            subject: `EeesshhMedia - Message from ${senderNameRef.current.value} (${senderEmailRef.current.value})`,
-            text: messageRef.current.value
-        }
-        try {
-            const res = await fetch('api/contact', {
-                method: 'POST',
-                headers: {'Content-Type': 'application/json'},
-                body: JSON.stringify(emailBody)
-            })
-            console.log('The email sent!')
-            setSent(true)
-
-        } 
-        catch (error) {
-            console.log('The email did not send...')
-        }
-
-    }
+export default function Contact() {
   return (
-    <motion.div
-    initial={{y: 100, opacity: 0 }}
-    whileInView={{y:0, opacity: 1 }}
-    viewport={{ once: true }}
-    transition={{ duration: 1 }}
-    name='contact'
-    className='h-full mt-20 mx-auto p-4 w-full'
-    >
-        <div className='flex flex-col items-center justify-center'>
-            <h1 className='border-b-2 border-[#5865F2] py-4 text-2xl font-bold text-black'>Book a Call</h1>
-            <p className='mt-4 text-md text-center text-neutral-500'>SEE IF WE ARE A GREAT FIT FOR YOU</p>
-        </div>
-        <form className='max-w-[600px] m-auto pt-4 text-black flex flex-col gap-2' onSubmit={handleSubmit}>
-                <input className=' border border-[#5865F2] p-3 rounded-lg' ref={senderNameRef} type="text" placeholder='Name'></input>
-                <input className='border border-[#5865F2] p-3 rounded-lg' ref={senderEmailRef} type="email" placeholder='Phone/Email'></input>
-            <textarea className='border border-[#5865F2] p-3 w-full rounded-lg' ref={messageRef} col="30" rows="10" placeholder="What Service are you looking for?"></textarea>
-                <a href="mailto:antdoan123@gmail.com" target="_blank" rel="noreferrer">
-                    <button className='rounded-md p-3 w-full mt-2 bg-[#5865F2] text-white font-bold text-xl shadow-lg'>Submit</button>
-                </a>
-                <p className={`pt-1 text-[#5865F2] italic ${sent ? '' : 'hidden'}`}>{"Sent! We'll get back to you shortly."}</p>
-            </form>        
-    </motion.div>
+
+        <section id="contact" className="bg-gradient-dark py-20 md:py-28">
+          <div className="container px-4">
+            <div className="mb-16 text-center">
+              <h2 className="text-4xl font-bold tracking-tight md:text-5xl">
+                Request Your <span className="bg-gradient-luxury bg-clip-text text-transparent">Premium Quote</span>
+              </h2>
+              <p className="mt-6 text-xl text-muted-foreground max-w-3xl mx-auto">
+                Experience the Chamba Mechanics difference with a complimentary consultation and detailed estimate
+              </p>
+            </div>
+            <div className="mx-auto max-w-3xl rounded-3xl border border-luxury-gold/30 bg-card/50 backdrop-blur p-8 shadow-2xl">
+              <form className="space-y-8">
+                <div className="grid gap-6 sm:grid-cols-2">
+                  <div className="space-y-3">
+                    <label htmlFor="name" className="text-sm font-medium text-luxury-gold">
+                      Full Name
+                    </label>
+                    <Input
+                      id="name"
+                      placeholder="John Doe"
+                      className="bg-background/50 border-luxury-charcoal focus:border-luxury-gold"
+                    />
+                  </div>
+                  <div className="space-y-3">
+                    <label htmlFor="phone" className="text-sm font-medium text-luxury-gold">
+                      Phone Number
+                    </label>
+                    <Input
+                      id="phone"
+                      type="tel"
+                      placeholder="(555) 123-4567"
+                      className="bg-background/50 border-luxury-charcoal focus:border-luxury-gold"
+                    />
+                  </div>
+                </div>
+                <div className="space-y-3">
+                  <label htmlFor="email" className="text-sm font-medium text-luxury-gold">
+                    Email Address
+                  </label>
+                  <Input
+                    id="email"
+                    type="email"
+                    placeholder="johndoe@example.com"
+                    className="bg-background/50 border-luxury-charcoal focus:border-luxury-gold"
+                  />
+                </div>
+                <div className="space-y-3">
+                  <label htmlFor="service" className="text-sm font-medium text-luxury-gold">
+                    Premium Service Required
+                  </label>
+                  <Select>
+                    <SelectTrigger className="bg-background/50 border-luxury-charcoal focus:border-luxury-gold">
+                      <SelectValue placeholder="Select your premium service" />
+                    </SelectTrigger>
+                    <SelectContent className="bg-card border-luxury-charcoal">
+                      <SelectItem value="precision-repair">Precision Repair</SelectItem>
+                      <SelectItem value="luxury-maintenance">Luxury Maintenance</SelectItem>
+                      <SelectItem value="battery-excellence">Battery Excellence</SelectItem>
+                      <SelectItem value="elite-inspection">Elite Inspection</SelectItem>
+                      <SelectItem value="advanced-electrical">Advanced Electrical</SelectItem>
+                      <SelectItem value="priority-emergency">Priority Emergency</SelectItem>
+                      <SelectItem value="custom-service">Custom Service</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+                <div className="space-y-3">
+                  <label htmlFor="message" className="text-sm font-medium text-luxury-gold">
+                    Vehicle Details & Service Requirements
+                  </label>
+                  <Textarea
+                    id="message"
+                    placeholder="Please provide your vehicle details (year, make, model) and describe the service you require. Our premium technicians will provide a detailed consultation."
+                    className="min-h-[140px] bg-background/50 border-luxury-charcoal focus:border-luxury-gold"
+                  />
+                </div>
+                <Button
+                  type="submit"
+                  className="w-full bg-gradient-luxury hover:opacity-90 text-black font-semibold py-4 text-lg"
+                >
+                  Request Premium Consultation
+                </Button>
+              </form>
+            </div>
+          </div>
+        </section>
   )
 }
-
-export default Contact

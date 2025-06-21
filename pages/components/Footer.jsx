@@ -1,56 +1,90 @@
-import Link from 'next/link'
-import React from 'react'
-import { AiOutlineInstagram, AiOutlineFacebook, AiOutlineArrowRight} from 'react-icons/ai'
-import { FaTiktok } from 'react-icons/fa'
+import Link from "next/link";
+import { Facebook, Instagram, Twitter } from "lucide-react";
 
-const Footer = () => {
+export default function Footer() {
   return (
-    <footer className="mt-20 max-w-7xl mx-auto p-4 w-full text-center lg:text-left text-white ">
-        
-        <div className='flex flex-col md:flex-row justify-between text-2xl md:text-3xl font-bold'>
-            <h1 className='mt-10'>Transform your business today.</h1>
-            <Link href="/">
-                <btn className='flex items-center justify-center gap-x-2 text-[#5865F2] hover:scale-105 transition duration-200 ease-in-out hover:cursor-pointer rounded-xl py-2 px-14 bg-white mt-10 shadow-lg'>
-                    <span className=' font-bold text-lg'>Get Started</span>
-                    <AiOutlineArrowRight className='flex items-center justify-center' size={'24px'}></AiOutlineArrowRight>
-                </btn>
+    <footer className="bg-gray-900 text-white w-full">
+      <div className="max-w-7xl mx-auto px-6 py-16 sm:px-8 lg:px-12">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-10">
+          {/* Brand + Info */}
+          <div className="md:col-span-2">
+            <Link href="/" className="inline-block mb-4">
+              <span className="text-2xl font-extrabold tracking-widest text-white">OPTIMAL</span>
             </Link>
-        </div>
-
-        <div className=" text-center p-2 border-t-2 mt-10">
-            <div className=''>
-                &copy; 2023 Copyright
-                <a className="text-white" href="./"> EeesshhMedia </a>
-                All rights reserved.
+            <p className="text-gray-400 mb-6 max-w-md leading-relaxed">
+              Vineland's premier 24/7 fitness center, dedicated to helping you achieve your goals in a dynamic and
+              supportive environment.
+            </p>
+            <div className="space-y-1 text-sm text-gray-400">
+              <p>📍 3821 South Main Road</p>
+              <p>🏙️ Vineland, NJ 08360</p>
+              <p>📞 (856) 825-4646</p>
             </div>
-            <div className=' text-center py-2'>
-            <p>Follow Our Social Media!</p>
-            <a
-                href="https://www.instagram.com/eeesshhmedia/"
-                target="_blank"
-                rel="noreferrer"
-                className='inline-flex  hover:scale-105 duration-200 pt-2'>
-            <AiOutlineInstagram size={24} ></AiOutlineInstagram>
-            </a>
-            <a
-                href="https://www.instagram.com/eeesshhmedia/"
-                target="_blank"
-                rel="noreferrer"
-                className='inline-flex  hover:scale-105 duration-200 pl-2'>
-            <FaTiktok size={24}></FaTiktok>
-            </a>
-            <a
-                href="https://www.instagram.com/eeesshhmedia/"
-                target="_blank"
-                rel="noreferrer"
-                className='inline-flex  hover:scale-105 duration-200 pl-2'>
-            <AiOutlineFacebook size={24}></AiOutlineFacebook>
-            </a>
-        </div>
+          </div>
+
+          {/* Quick Links */}
+          <div>
+            <h3 className="text-lg font-semibold mb-4">Quick Links</h3>
+            <ul className="space-y-2 text-sm">
+              {["About", "Facilities", "Classes", "Memberships", "Contact"].map((label) => (
+                <li key={label}>
+                  <Link
+                    href={`#${label.toLowerCase()}`}
+                    className="text-gray-400 hover:text-white transition-colors duration-200"
+                  >
+                    {label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Connect + Legal */}
+          <div>
+            <h3 className="text-lg font-semibold mb-4">Connect With Us</h3>
+            <div className="flex space-x-4 mb-6">
+              <Link
+                href="#"
+                aria-label="Facebook"
+                className="p-2 rounded-full bg-white/10 hover:bg-white/20 transition"
+              >
+                <Facebook className="h-5 w-5" />
+              </Link>
+              <Link
+                href="#"
+                aria-label="Instagram"
+                className="p-2 rounded-full bg-white/10 hover:bg-white/20 transition"
+              >
+                <Instagram className="h-5 w-5" />
+              </Link>
+              <Link
+                href="#"
+                aria-label="Twitter"
+                className="p-2 rounded-full bg-white/10 hover:bg-white/20 transition"
+              >
+                <Twitter className="h-5 w-5" />
+              </Link>
+            </div>
+            <ul className="space-y-2 text-sm">
+              <li>
+                <Link href="/terms" className="text-gray-400 hover:text-white transition-colors">
+                  Terms of Service
+                </Link>
+              </li>
+              <li>
+                <Link href="/privacy" className="text-gray-400 hover:text-white transition-colors">
+                  Privacy Policy
+                </Link>
+              </li>
+            </ul>
+          </div>
         </div>
 
-  </footer>
-  )
+        {/* Footer bottom */}
+        <div className="mt-12 border-t border-gray-800 pt-6 text-center text-sm text-gray-500">
+          <p>© {new Date().getFullYear()} Optimal Gym. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+  );
 }
-
-export default Footer
