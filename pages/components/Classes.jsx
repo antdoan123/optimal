@@ -2,8 +2,12 @@
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
+import { useState, useEffect } from "react";
+import { parseISO, format } from "date-fns";
 
-const classes = [
+const SHEET_URL = "https://api.sheetbest.com/sheets/1187d393-08dc-4e56-9108-21a289b07e85"; // your Sheet.best link
+
+const staticClasses = [
   {
     name: "Boot Camp",
     duration: "60 min",
@@ -35,6 +39,38 @@ const classes = [
 ];
 
 export default function Classes() {
+  const [scheduleMap, setScheduleMap] = useState({});
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const res = await fetch(SHEET_URL);
+      const data = await res.json();
+
+      const schedule = {};
+
+      data.forEach((cls) => {
+        try {
+          if (!cls.datetime) return;
+
+          const date = parseISO(cls.datetime);
+          if (isNaN(date.getTime())) return;
+
+          const weekday = format(date, "EEEE");
+          const time = format(date, "HH:mm");
+
+          if (!schedule[time]) schedule[time] = {};
+          schedule[time][weekday] = cls.name;
+        } catch (err) {
+          console.warn("Invalid datetime:", cls.datetime);
+        }
+      });
+
+      setScheduleMap(schedule);
+    };
+
+    fetchData();
+  }, []);
+
   return (
     <section id="classes" className="w-full py-20 bg-white">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
@@ -47,9 +83,9 @@ export default function Classes() {
           </p>
         </div>
 
-        {/* Cards */}
+        {/* Class Cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {classes.map((classItem, index) => (
+          {staticClasses.map((classItem, index) => (
             <motion.div
               key={index}
               className="group bg-white rounded-xl shadow-lg overflow-hidden border hover:shadow-2xl transition-shadow duration-300"
@@ -60,7 +96,7 @@ export default function Classes() {
             >
               <div className="relative aspect-[4/3] overflow-hidden">
                 <Image
-                  src={classItem.image}
+                  src={classItem.image || "/placeholder.svg"}
                   alt={classItem.name}
                   fill
                   className="object-cover transition-transform duration-500 group-hover:scale-105"
@@ -88,11 +124,37 @@ export default function Classes() {
           ))}
         </div>
 
-        {/* CTA Button */}
-        <div className="mt-16 text-center">
-          <Button className="bg-purple-600 hover:bg-purple-700 text-white px-8 py-3 text-base font-medium">
-            View Full Schedule
-          </Button>
+        {/* Weekly Schedule Table */}
+        <div className="mt-20 text-black">
+          <h2 className="text-2xl font-bold text-center mb-6 text-black">Weekly Schedule</h2>
+          <div className="overflow-x-auto">
+            <table className="min-w-full border-collapse border border-gray-200 text-sm">
+              <thead>
+                <tr className="bg-gray-100">
+                  <th className="border border-gray-200 p-2">Time</th>
+                  {["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].map((day) => (
+                    <th key={day} className="border border-gray-200 p-2 text-center">{day}</th>
+                  ))}
+                </tr>
+              </thead>
+              <tbody>
+                {Object.keys(scheduleMap)
+                  .sort((a, b) => new Date(`1970-01-01T${a}`) - new Date(`1970-01-01T${b}`))
+                  .map((time) => (
+                    <tr key={time}>
+                      <td className="border border-gray-200 p-2 font-medium">
+                        {format(new Date(`1970-01-01T${time}`), "h:mm a")}
+                      </td>
+                      {["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].map((day) => (
+                        <td key={day} className="border border-gray-200 p-2 text-center text-gray-700">
+                          {scheduleMap[time] && scheduleMap[time][day] ? scheduleMap[time][day] : "-"}
+                        </td>
+                      ))}
+                    </tr>
+                  ))}
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
     </section>
