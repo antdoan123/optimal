@@ -45,7 +45,7 @@ export default function About() {
           <div className="relative">
             <div className="aspect-[4/3] relative rounded-lg overflow-hidden shadow-lg">
               <Image
-                src="/about.jpg"
+                src="/about.JPG"
                 alt="Modern gym interior"
                 fill
                 className="object-cover"
