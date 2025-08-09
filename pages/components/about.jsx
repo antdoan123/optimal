@@ -45,7 +45,7 @@ export default function About() {
           <div className="relative">
             <div className="aspect-[4/3] relative rounded-lg overflow-hidden shadow-lg">
               <Image
-                src="/placeholder.svg?height=600&width=800"
+                src="/about.jpg"
                 alt="Modern gym interior"
                 fill
                 className="object-cover"

@@ -6,7 +6,7 @@ const facilities = [
   {
     title: "Modern Equipment",
     description: "High-quality machines for strength and cardio training",
-    image: "/placeholder.svg?height=600&width=800",
+    image: "/machine.jpg",
   },
   {
     title: "Swimming Pool",
@@ -16,12 +16,12 @@ const facilities = [
   {
     title: "Recovery Area",
     description: "Dedicated space for stretching and post-workout recovery",
-    image: "/placeholder.svg?height=600&width=800",
+    image: "/recovery.jpg",
   },
   {
     title: "Sports Courts",
     description: "Professional courts for tennis, basketball, and racquetball",
-    image: "/placeholder.svg?height=600&width=800",
+    image: "/tennis.jpg",
   },
 ];
 
