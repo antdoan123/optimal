@@ -2,89 +2,95 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
 
-const facilities = [
+const amenities = [
   {
-    title: "Modern Equipment",
-    description: "High-quality machines for strength and cardio training",
-    image: "/machine.JPG",
+    title: "Old-School Free Weights",
+    description: "A full weight training area with dumbbells, racks, benches and strength equipment for all levels.",
+    image: "/weights.jpg",
   },
   {
-    title: "Swimming Pool",
-    description: "Clean, well-maintained pool for lap swimming and aquatic fitness",
-    image: "/placeholder.svg?height=600&width=800",
-  },
-  {
-    title: "Recovery Area",
-    description: "Dedicated space for stretching and post-workout recovery",
-    image: "/recovery.JPG",
-  },
-  {
-    title: "Sports Courts",
-    description: "Professional courts for tennis, basketball, and racquetball",
+    title: "Indoor Tennis Court",
+    description: "Train year-round on our indoor court — no weather, no wait.",
     image: "/tennis.JPG",
+  },
+  {
+    title: "Racquetball & Basketball Courts",
+    description: "Play solo or compete with friends — a true sports club experience.",
+    image: "/courts.jpg",
+  },
+  {
+    title: "Cardio Training Zone",
+    description: "Treadmills, bikes, rowers and other machines to help build stamina and conditioning.",
+    image: "/cardio.jpg",
+  },
+  {
+    title: "Steam Room & Sauna",
+    description: "Recover, relax, and recharge with heat therapy after your workout.",
+    image: "/sauna.jpg",
+  },
+  {
+    title: "Group Fitness Classes",
+    description: "Yoga, Zumba, Pilates and Bootcamp — led by real instructors.",
+    image: "/classes.jpg",
+  },
+  {
+    title: "Locker Rooms & Showers",
+    description: "Clean and convenient locker areas for post-workout refresh.",
+    image: "/lockerroom.jpg",
+  },
+  {
+    title: "24/7 Member Access",
+    description: "Train on your schedule — anytime, day or night.",
+    image: "/24hours.jpg",
   },
 ];
 
-export default function Feature() {
+export default function Amenities() {
   return (
-    <section id="facilities" className="w-full py-20 bg-white">
+    <section id="amenities" className="w-full py-20 bg-gray-50">
       <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
         {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, ease: "easeOut" }}
+          transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="mb-12 text-center"
+          className="text-center mb-12"
         >
-          <h2 className="text-3xl font-bold tracking-wide mb-4 text-gray-900">Our Facilities</h2>
-          <p className="text-gray-600 max-w-2xl mx-auto">
-            Optimal Gym offers well-designed spaces that inspire performance and recovery. Each area is thoughtfully
-            equipped to support your fitness journey.
+          <h2 className="text-4xl font-bold text-gray-900">Amenities & Features</h2>
+          <p className="text-gray-600 mt-3 max-w-2xl mx-auto">
+            More than a gym — a full fitness and sports environment built for every goal and every style of training.
           </p>
         </motion.div>
 
-        {/* Facility Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {facilities.map((facility, index) => (
+        {/* Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {amenities.map((item, i) => (
             <motion.div
-              key={index}
+              key={i}
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
+              transition={{ duration: 0.5, delay: i * 0.08 }}
               viewport={{ once: true }}
-              className="relative group overflow-hidden rounded-lg shadow-md w-full"
+              className="relative group overflow-hidden rounded-lg shadow-md"
             >
               <div className="aspect-video relative w-full">
                 <Image
-                  src={facility.image}
-                  alt={facility.title}
+                  src={item.image}
+                  alt={item.title}
                   fill
                   className="object-cover transition-transform duration-500 group-hover:scale-105"
                 />
-                <div className="absolute inset-0 bg-black/30 group-hover:bg-black/40 transition duration-300" />
-                <div className="absolute inset-0 p-6 flex flex-col justify-end">
-                  <h3 className="text-xl font-semibold text-white mb-1">{facility.title}</h3>
-                  <p className="text-sm text-white/90">{facility.description}</p>
+                <div className="absolute inset-0 bg-black/35 group-hover:bg-black/50 transition" />
+                <div className="absolute bottom-0 p-5 text-white">
+                  <h3 className="text-lg font-semibold">{item.title}</h3>
+                  <p className="text-sm text-white/90">{item.description}</p>
                 </div>
               </div>
             </motion.div>
           ))}
         </div>
-
-        {/* Footer Text */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, ease: "easeOut", delay: 0.3 }}
-          viewport={{ once: true }}
-          className="mt-12 text-center"
-        >
-          <p className="text-gray-600 max-w-2xl mx-auto">
-            Our facilities are designed to provide a comfortable and motivating environment for members of all fitness
-            levels.
-          </p>
-        </motion.div>
       </div>
     </section>
   );

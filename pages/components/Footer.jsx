@@ -44,25 +44,18 @@ export default function Footer() {
             <h3 className="text-lg font-semibold mb-4">Connect With Us</h3>
             <div className="flex space-x-4 mb-6">
               <Link
-                href="#"
+                href="https://www.instagram.com/vineland_optimal_gym/"
                 aria-label="Facebook"
                 className="p-2 rounded-full bg-white/10 hover:bg-white/20 transition"
               >
                 <Facebook className="h-5 w-5" />
               </Link>
               <Link
-                href="#"
+                href="https://www.instagram.com/vineland_optimal_gym/"
                 aria-label="Instagram"
                 className="p-2 rounded-full bg-white/10 hover:bg-white/20 transition"
               >
                 <Instagram className="h-5 w-5" />
-              </Link>
-              <Link
-                href="#"
-                aria-label="Twitter"
-                className="p-2 rounded-full bg-white/10 hover:bg-white/20 transition"
-              >
-                <Twitter className="h-5 w-5" />
               </Link>
             </div>
             <ul className="space-y-2 text-sm">

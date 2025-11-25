@@ -1,113 +1,46 @@
-import Image from "next/image"
-import Link from "next/link"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Textarea } from "@/components/ui/textarea"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import {
-  Facebook,
-  Instagram,
-  Twitter,
-  MapPin,
-  Clock,
-  Phone,
-  Mail,
-  Wrench,
-  Car,
-  PenToolIcon as Tool,
-  CheckCircle,
-  ChevronRight,
-  Star,
-} from "lucide-react"
+import { Phone, MapPin, ArrowRight } from "lucide-react"
 
-export default function Contact() {
+export default function CallToAction() {
   return (
+<section id="memberships" className="py-20 bg-purple-600 relative overflow-hidden w-full">
+  <div className="absolute inset-0 bg-[url('/cta-texture.png')] opacity-10 pointer-events-none"></div>
 
-        <section id="contact" className="bg-gradient-dark py-20 md:py-28">
-          <div className="container px-4">
-            <div className="mb-16 text-center">
-              <h2 className="text-4xl font-bold tracking-tight md:text-5xl">
-                Request Your <span className="bg-gradient-luxury bg-clip-text text-transparent">Premium Quote</span>
-              </h2>
-              <p className="mt-6 text-xl text-muted-foreground max-w-3xl mx-auto">
-                Experience the Chamba Mechanics difference with a complimentary consultation and detailed estimate
-              </p>
-            </div>
-            <div className="mx-auto max-w-3xl rounded-3xl border border-luxury-gold/30 bg-card/50 backdrop-blur p-8 shadow-2xl">
-              <form className="space-y-8">
-                <div className="grid gap-6 sm:grid-cols-2">
-                  <div className="space-y-3">
-                    <label htmlFor="name" className="text-sm font-medium text-luxury-gold">
-                      Full Name
-                    </label>
-                    <Input
-                      id="name"
-                      placeholder="John Doe"
-                      className="bg-background/50 border-luxury-charcoal focus:border-luxury-gold"
-                    />
-                  </div>
-                  <div className="space-y-3">
-                    <label htmlFor="phone" className="text-sm font-medium text-luxury-gold">
-                      Phone Number
-                    </label>
-                    <Input
-                      id="phone"
-                      type="tel"
-                      placeholder="(555) 123-4567"
-                      className="bg-background/50 border-luxury-charcoal focus:border-luxury-gold"
-                    />
-                  </div>
-                </div>
-                <div className="space-y-3">
-                  <label htmlFor="email" className="text-sm font-medium text-luxury-gold">
-                    Email Address
-                  </label>
-                  <Input
-                    id="email"
-                    type="email"
-                    placeholder="johndoe@example.com"
-                    className="bg-background/50 border-luxury-charcoal focus:border-luxury-gold"
-                  />
-                </div>
-                <div className="space-y-3">
-                  <label htmlFor="service" className="text-sm font-medium text-luxury-gold">
-                    Premium Service Required
-                  </label>
-                  <Select>
-                    <SelectTrigger className="bg-background/50 border-luxury-charcoal focus:border-luxury-gold">
-                      <SelectValue placeholder="Select your premium service" />
-                    </SelectTrigger>
-                    <SelectContent className="bg-card border-luxury-charcoal">
-                      <SelectItem value="precision-repair">Precision Repair</SelectItem>
-                      <SelectItem value="luxury-maintenance">Luxury Maintenance</SelectItem>
-                      <SelectItem value="battery-excellence">Battery Excellence</SelectItem>
-                      <SelectItem value="elite-inspection">Elite Inspection</SelectItem>
-                      <SelectItem value="advanced-electrical">Advanced Electrical</SelectItem>
-                      <SelectItem value="priority-emergency">Priority Emergency</SelectItem>
-                      <SelectItem value="custom-service">Custom Service</SelectItem>
-                    </SelectContent>
-                  </Select>
-                </div>
-                <div className="space-y-3">
-                  <label htmlFor="message" className="text-sm font-medium text-luxury-gold">
-                    Vehicle Details & Service Requirements
-                  </label>
-                  <Textarea
-                    id="message"
-                    placeholder="Please provide your vehicle details (year, make, model) and describe the service you require. Our premium technicians will provide a detailed consultation."
-                    className="min-h-[140px] bg-background/50 border-luxury-charcoal focus:border-luxury-gold"
-                  />
-                </div>
-                <Button
-                  type="submit"
-                  className="w-full bg-gradient-luxury hover:opacity-90 text-black font-semibold py-4 text-lg"
-                >
-                  Request Premium Consultation
-                </Button>
-              </form>
-            </div>
-          </div>
-        </section>
-  )
-}
+  {/* Content Container */}
+  <div className="max-w-6xl mx-auto px-6 text-center relative z-10">
+    <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+      Ready to Get Started?
+    </h2>
+
+    <p className="text-white/90 max-w-2xl mx-auto mb-10 text-lg">
+      Stop by for a tour or call us for membership details. No pressure — just see if we're the right fit for you.
+    </p>
+
+    <div className="flex flex-col md:flex-row justify-center gap-6">
+
+      {/* Call Button */}
+      <a
+        href="tel:+18565550123"
+        className="flex items-center justify-center gap-3 bg-white text-purple-600 font-semibold px-8 py-4 rounded-lg shadow-lg hover:bg-gray-100 transition"
+      >
+        <Phone className="w-5 h-5" />
+        Call for Pricing
+      </a>
+
+      {/* Visit Button */}
+      <a
+        href="https://maps.google.com/?q=3821+South+Main+Road,+Vineland,+NJ+08360"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="flex items-center justify-center gap-3 border-2 border-white text-white font-semibold px-8 py-4 rounded-lg hover:bg-white hover:text-purple-600 transition"
+      >
+        <MapPin className="w-5 h-5" />
+        Visit the Gym
+      </a>
+    </div>
+
+    <p className="mt-8 text-white/80 flex items-center justify-center gap-2 text-sm">
+      Membership options available → 1, 3, 6 & 12 months
+    </p>
+  </div>
+</section>
+  )}

@@ -1,13 +1,10 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-body{
-  font-family: 'Playfair Display', serif;
-}
+/* --------- Custom Gradients & Utilities --------- */
 
 .blue__gradient {
   background: linear-gradient(180deg, rgba(188, 165, 255, 0) 0%, #214d76 100%);
@@ -25,7 +22,7 @@ body{
 }
 
 .text-gradient {
-  @apply bg-gradient-to-b from-[#5865F2] to-pink-200 text-transparent bg-clip-text
+  @apply bg-gradient-to-b from-[#5865F2] to-pink-200 text-transparent bg-clip-text;
 }
 
 .mechanic__bg {
@@ -36,7 +33,7 @@ body{
   background: linear-gradient(160deg, #1e293b 0%, #334155 100%);
 }
 
-
+/* --------- Design Tokens / Tailwind CSS Variables --------- */
 
 @layer base {
   :root {
@@ -65,7 +62,12 @@ body{
     --chart-4: 43 74% 66%;
     --chart-5: 27 87% 67%;
     --radius: 0.5rem;
+
+    /* Font variables */
+    --font-heading: 'Anton', sans-serif;
+    --font-body: 'Inter', sans-serif;
   }
+
   .dark {
     --background: 0 0% 3.9%;
     --foreground: 0 0% 98%;
@@ -94,13 +96,25 @@ body{
   }
 }
 
-
-
 @layer base {
   * {
     @apply border-border;
   }
+
   body {
     @apply bg-background text-foreground;
+    font-family: var(--font-body);
   }
+}
+
+/* --------- Typography Overrides --------- */
+
+/* All main headings use Anton */
+h1,
+h2,
+h3,
+.hero-title {
+  font-family: var(--font-heading);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
 }
