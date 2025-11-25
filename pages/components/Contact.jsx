@@ -12,7 +12,7 @@ export default function CallToAction() {
     </h2>
 
     <p className="text-white/90 max-w-2xl mx-auto mb-10 text-lg">
-      Stop by for a tour or call us for membership details. No pressure — just see if we're the right fit for you.
+      Stop by for a tour or call us for membership details. No pressure — just see if we are the right fit for you.
     </p>
 
     <div className="flex flex-col md:flex-row justify-center gap-6">
@@ -39,7 +39,7 @@ export default function CallToAction() {
     </div>
 
     <p className="mt-8 text-white/80 flex items-center justify-center gap-2 text-sm">
-      Membership options available → 1, 3, 6 & 12 months
+      Membership options available: 1, 3, 6 & 12 months
     </p>
   </div>
 </section>
