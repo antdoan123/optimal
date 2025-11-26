@@ -5,10 +5,15 @@ import Link from "next/link"
 import { Menu, X } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
+const SHEETBEST_URL =
+  "https://api.sheetbest.com/sheets/1187d393-08dc-4e56-9108-21a289b07e85"
+
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
+  const [announcement, setAnnouncement] = useState(null)
 
+  // scroll effect
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 10)
@@ -18,12 +23,47 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
+  // announcement fetch
+  useEffect(() => {
+    const fetchAnnouncement = async () => {
+      try {
+        const res = await fetch(SHEETBEST_URL)
+        const data = await res.json()
+
+        console.log("Sheetbest data:", data)
+
+        if (!Array.isArray(data) || data.length === 0) return
+
+        // Find the row where name is "ALERT" (or any special marker you pick)
+        const alertRow = data.find(
+          (row) =>
+            String(row.name || "")
+              .toLowerCase()
+              .trim() === "alert"
+        )
+
+        if (!alertRow) return
+
+        // Use duration as the message, description as optional url
+        const message = (alertRow.duration || "").trim()
+        const url = (alertRow.description || "").trim() || null
+
+        if (message) {
+          setAnnouncement({ message, url })
+        }
+      } catch (err) {
+        console.error("Announcement fetch error:", err)
+      }
+    }
+
+    fetchAnnouncement()
+  }, [])
+
   const navLinks = [
     { href: "#about", label: "About" },
-    { href: "#facilities", label: "Facilities" },
+    { href: "#amenities", label: "Amenities" },
     { href: "#classes", label: "Classes" },
-    { href: "#memberships", label: "Memberships" },
-    { href: "#contact", label: "Contact" },
+    { href: "#faq", label: "FAQ" },
   ]
 
   return (
@@ -32,6 +72,24 @@ export default function Navbar() {
         scrolled ? "bg-white shadow-md" : "bg-transparent"
       }`}
     >
+      {/* Notification Bar */}
+      {announcement && (
+        <div className="w-full bg-purple-700 text-white text-xs sm:text-sm px-4 sm:px-6 py-2 flex items-center justify-center">
+          {announcement.url ? (
+            <a
+              href={announcement.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="underline-offset-2 hover:underline flex items-center gap-1"
+            >
+              {announcement.message}
+            </a>
+          ) : (
+            <span>{announcement.message}</span>
+          )}
+        </div>
+      )}
+
       <div className="max-w-7xl mx-auto px-6 sm:px-8">
         <div className="flex justify-between items-center h-[88px]">
           {/* Logo */}

@@ -6,7 +6,7 @@ const amenities = [
   {
     title: "Old-School Free Weights",
     description: "A full weight training area with dumbbells, racks, benches and strength equipment for all levels.",
-    image: "/weights.jpg",
+    image: "/about.jpg",
   },
   {
     title: "Indoor Tennis Court",
@@ -16,12 +16,12 @@ const amenities = [
   {
     title: "Racquetball & Basketball Courts",
     description: "Play solo or compete with friends — a true sports club experience.",
-    image: "/courts.jpg",
+    image: "/basketball.jpg",
   },
   {
     title: "Cardio Training Zone",
     description: "Treadmills, bikes, rowers and other machines to help build stamina and conditioning.",
-    image: "/cardio.jpg",
+    image: "/bg.jpg",
   },
   {
     title: "Steam Room & Sauna",
@@ -31,17 +31,17 @@ const amenities = [
   {
     title: "Group Fitness Classes",
     description: "Yoga, Zumba, Pilates and Bootcamp — led by real instructors.",
-    image: "/classes.jpg",
+    image: "/pilates.jpg",
   },
   {
     title: "Locker Rooms & Showers",
     description: "Clean and convenient locker areas for post-workout refresh.",
-    image: "/lockerroom.jpg",
+    image: "/locker.jpg",
   },
   {
     title: "24/7 Member Access",
     description: "Train on your schedule — anytime, day or night.",
-    image: "/24hours.jpg",
+    image: "/recovery.JPG",
   },
 ];
 

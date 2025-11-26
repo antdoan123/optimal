@@ -73,7 +73,7 @@ export default function Home() {
         />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="robots" content="index,follow" />
-        <link rel="icon" href="/optimallogo.png" />
+        <link rel="icon" type="image/png" href="/optimallogo.png" />
 
         {/* Open Graph / Social preview */}
         <meta

@@ -13,28 +13,28 @@ const staticClasses = [
     duration: "60 min",
     description:
       "High-intensity workouts combining cardio, strength training, obstacle courses, kickboxing, and military-style drills.",
-    image: "/placeholder.svg?height=400&width=600",
+    image: "/bootcamp.jpg?height=400&width=600",
   },
   {
     name: "Yoga Flow",
     duration: "45 min",
     description:
       "Peaceful classes to increase flexibility, coordination, and strength with certified yoga instructors. All levels welcome.",
-    image: "/placeholder.svg?height=400&width=600",
+    image: "/yoga.jpg?height=400&width=600",
   },
   {
     name: "Pilates",
     duration: "50 min",
     description:
       "Strengthen your core, improve flexibility, and boost endurance through structured Pilates sessions for all levels.",
-    image: "/placeholder.svg?height=400&width=600",
+    image: "/pilates.jpg?height=400&width=600",
   },
   {
     name: "Zumba",
     duration: "45 min",
     description:
       "A Latin-inspired dance-fitness party blending upbeat music and moves for an energetic, fun, and effective workout.",
-    image: "/placeholder.svg?height=400&width=600",
+    image: "/zumba.jpg?height=400&width=600",
   },
 ];
 
