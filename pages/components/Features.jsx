@@ -6,7 +6,7 @@ const amenities = [
   {
     title: "Old-School Free Weights",
     description: "A full weight training area with dumbbells, racks, benches and strength equipment for all levels.",
-    image: "/about.jpg",
+    image: "/about.JPG",
   },
   {
     title: "Indoor Tennis Court",
