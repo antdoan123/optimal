@@ -35,7 +35,7 @@ export default function Hero() {
   "
   style={{ textShadow: "0px 3px 6px rgba(0,0,0,0.35)" }}
 >          More Than a Gym.
-          <br className="hidden sm:block" /> A Full Fitness &amp; Sports Club.
+          <br className="hidden sm:block" /> A Full Fitness &amp; sports club.
         </h1>
 
         <p className="text-base sm:text-lg md:text-xl mb-8 text-white/90">
