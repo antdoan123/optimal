@@ -5,7 +5,8 @@ import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
 import { parseISO, format } from "date-fns";
 
-const SHEET_URL = "https://api.sheetbest.com/sheets/1187d393-08dc-4e56-9108-21a289b07e85"; // your Sheet.best link
+const SHEET_URL =
+  "https://api.sheetbest.com/sheets/1187d393-08dc-4e56-9108-21a289b07e85"; // class schedule from Sheet.best
 
 const staticClasses = [
   {
@@ -38,34 +39,50 @@ const staticClasses = [
   },
 ];
 
+// TODO: replace with real trainers + images + emails when they send them
+const trainers = [
+  {
+    name: "Jennifer Newton",
+    role: "Personal Trainer",
+    bio: "Specializes in muscle building, strength training, and athletic performance for all fitness levels.",
+    image: "/personal.png", // replace with real path
+    email: "Powerbyjen@gmail.com",
+  },
+
+];
+
 export default function Classes() {
   const [scheduleMap, setScheduleMap] = useState({});
 
   useEffect(() => {
     const fetchData = async () => {
-      const res = await fetch(SHEET_URL);
-      const data = await res.json();
+      try {
+        const res = await fetch(SHEET_URL);
+        const data = await res.json();
 
-      const schedule = {};
+        const schedule = {};
 
-      data.forEach((cls) => {
-        try {
-          if (!cls.datetime) return;
+        data.forEach((cls) => {
+          try {
+            if (!cls.datetime) return;
 
-          const date = parseISO(cls.datetime);
-          if (isNaN(date.getTime())) return;
+            const date = parseISO(cls.datetime);
+            if (isNaN(date.getTime())) return;
 
-          const weekday = format(date, "EEEE");
-          const time = format(date, "HH:mm");
+            const weekday = format(date, "EEEE");
+            const time = format(date, "HH:mm");
 
-          if (!schedule[time]) schedule[time] = {};
-          schedule[time][weekday] = cls.name;
-        } catch (err) {
-          console.warn("Invalid datetime:", cls.datetime);
-        }
-      });
+            if (!schedule[time]) schedule[time] = {};
+            schedule[time][weekday] = cls.name;
+          } catch (err) {
+            console.warn("Invalid datetime:", cls.datetime);
+          }
+        });
 
-      setScheduleMap(schedule);
+        setScheduleMap(schedule);
+      } catch (error) {
+        console.error("Failed to load class schedule:", error);
+      }
     };
 
     fetchData();
@@ -76,10 +93,12 @@ export default function Classes() {
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         {/* Header */}
         <div className="mb-12 max-w-3xl">
-          <h2 className="text-3xl font-bold tracking-wide mb-4 text-gray-900">Group Classes</h2>
+          <h2 className="text-3xl font-bold tracking-wide mb-4 text-gray-900">
+            Group Classes
+          </h2>
           <p className="text-gray-600">
-            Our diverse range of classes are led by experienced instructors who will motivate and guide you to achieve
-            your fitness goals.
+            Our diverse range of classes are led by experienced instructors who
+            will motivate and guide you to achieve your fitness goals.
           </p>
         </div>
 
@@ -110,8 +129,12 @@ export default function Classes() {
               </div>
               <div className="p-5 flex flex-col justify-between h-[240px]">
                 <div>
-                  <h3 className="text-lg font-semibold mb-2 text-gray-900">{classItem.name}</h3>
-                  <p className="text-gray-600 text-sm line-clamp-4">{classItem.description}</p>
+                  <h3 className="text-lg font-semibold mb-2 text-gray-900">
+                    {classItem.name}
+                  </h3>
+                  <p className="text-gray-600 text-sm line-clamp-4">
+                    {classItem.description}
+                  </p>
                 </div>
                 <Button
                   variant="outline"
@@ -126,34 +149,126 @@ export default function Classes() {
 
         {/* Weekly Schedule Table */}
         <div className="mt-20 text-black">
-          <h2 className="text-2xl font-bold text-center mb-6 text-black">Weekly Schedule</h2>
+          <h2 className="text-2xl font-bold text-center mb-6 text-black">
+            Weekly Schedule
+          </h2>
           <div className="overflow-x-auto">
             <table className="min-w-full border-collapse border border-gray-200 text-sm">
               <thead>
                 <tr className="bg-gray-100">
                   <th className="border border-gray-200 p-2">Time</th>
-                  {["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].map((day) => (
-                    <th key={day} className="border border-gray-200 p-2 text-center">{day}</th>
+                  {[
+                    "Monday",
+                    "Tuesday",
+                    "Wednesday",
+                    "Thursday",
+                    "Friday",
+                    "Saturday",
+                    "Sunday",
+                  ].map((day) => (
+                    <th
+                      key={day}
+                      className="border border-gray-200 p-2 text-center"
+                    >
+                      {day}
+                    </th>
                   ))}
                 </tr>
               </thead>
               <tbody>
                 {Object.keys(scheduleMap)
-                  .sort((a, b) => new Date(`1970-01-01T${a}`) - new Date(`1970-01-01T${b}`))
+                  .sort(
+                    (a, b) =>
+                      new Date(`1970-01-01T${a}`) -
+                      new Date(`1970-01-01T${b}`)
+                  )
                   .map((time) => (
                     <tr key={time}>
                       <td className="border border-gray-200 p-2 font-medium">
-                        {format(new Date(`1970-01-01T${time}`), "h:mm a")}
+                        {format(
+                          new Date(`1970-01-01T${time}`),
+                          "h:mm a"
+                        )}
                       </td>
-                      {["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].map((day) => (
-                        <td key={day} className="border border-gray-200 p-2 text-center text-gray-700">
-                          {scheduleMap[time] && scheduleMap[time][day] ? scheduleMap[time][day] : "-"}
+                      {[
+                        "Monday",
+                        "Tuesday",
+                        "Wednesday",
+                        "Thursday",
+                        "Friday",
+                        "Saturday",
+                        "Sunday",
+                      ].map((day) => (
+                        <td
+                          key={day}
+                          className="border border-gray-200 p-2 text-center text-gray-700"
+                        >
+                          {scheduleMap[time] && scheduleMap[time][day]
+                            ? scheduleMap[time][day]
+                            : "-"}
                         </td>
                       ))}
                     </tr>
                   ))}
               </tbody>
             </table>
+          </div>
+        </div>
+
+        {/* Personal Training Section */}
+        <div className="mt-20">
+          <div className="mb-8 text-center max-w-3xl mx-auto">
+            <h2 className="text-3xl font-bold tracking-wide mb-4 text-gray-900">
+              Personal Training
+            </h2>
+            <p className="text-gray-600">
+              Looking for one-on-one coaching or a more customized plan? Our
+              personal trainers offer private sessions tailored to your goals —
+              from weight loss and strength training to athletic performance.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {trainers.map((trainer, index) => (
+              <motion.div
+                key={trainer.email}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: index * 0.1 }}
+                className="flex flex-col md:flex-row bg-white rounded-xl shadow-lg overflow-hidden border"
+              >
+                <div className="relative w-full md:w-1/3 aspect-[4/3] md:aspect-auto">
+                  <Image
+                    src={trainer.image || "/placeholder.svg"}
+                    alt={trainer.name}
+                    fill
+                    className="object-cover"
+                  />
+                </div>
+                <div className="p-5 flex flex-col justify-between w-full md:w-2/3">
+                  <div>
+                    <h3 className="text-xl font-semibold text-gray-900">
+                      {trainer.name}
+                    </h3>
+                    <p className="text-purple-600 text-sm font-medium mb-2">
+                      {trainer.role}
+                    </p>
+                    <p className="text-gray-600 text-sm">{trainer.bio}</p>
+                  </div>
+                  <div className="mt-4">
+                    <Button
+                      className="w-full md:w-auto bg-purple-600 hover:bg-purple-700 text-white"
+                      asChild
+                    >
+                      <a href={`mailto:${trainer.email}`}>
+                        Email {trainer.name.split(" ")[0]} for Private Training
+                      </a>
+                    </Button>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
           </div>
         </div>
       </div>

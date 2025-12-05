@@ -60,13 +60,9 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>
-          Optimal Gym Vineland NJ | 24/7 Fitness, Indoor Tennis &amp; Sports Club
-        </title>
-        <meta
-          name="description"
-          content="Train at Optimal Gym in Vineland, NJ. 24/7 access, old-school free weights, cardio, indoor tennis, racquetball and basketball courts, steam room, sauna, and group fitness classes."
-        />
+<title>Optimal Gym | 24/7 Gym & Indoor Tennis in Vineland, NJ</title>
+<meta name="description" content="Optimal Gym is Vineland's full-service 24/7 fitness center offering indoor tennis, racquetball, basketball courts, sauna, steam room, pool, classes, and more." />
+
         <meta
           name="keywords"
           content="Optimal Gym Vineland, gym Vineland NJ, indoor tennis Vineland, racquetball court Vineland, basketball court gym, 24 hour gym Vineland, fitness center Vineland NJ, sauna steam room gym NJ"
