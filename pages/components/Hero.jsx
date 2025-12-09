@@ -40,7 +40,7 @@ export default function Hero() {
 
         <p className="text-base sm:text-lg md:text-xl mb-8 text-white/90">
           Old-school iron, modern convenience. Enjoy 24/7 training with free weights,
-          cardio, indoor tennis, racquetball and basketball courts, plus steam room,
+          cardio, indoor tennis, indoor pickleball, racquetball and basketball courts, plus steam room,
           sauna, and more—all under one roof.
         </p>
 

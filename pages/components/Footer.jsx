@@ -18,7 +18,7 @@ export default function Footer() {
             <div className="space-y-1 text-sm text-gray-400">
               <p>📍 3821 South Main Road</p>
               <p>🏙️ Vineland, NJ 08360</p>
-              <p>📞 (856) 825-4646</p>
+              <p>📞 (856) 300-7099</p>
             </div>
           </div>
 
