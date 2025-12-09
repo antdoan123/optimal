@@ -44,7 +44,7 @@ const trainers = [
   {
     name: "Jennifer Newton",
     role: "Personal Trainer",
-    bio: "Specializes in muscle building, strength training, and athletic performance for all fitness levels.",
+    bio: "NASM certified with 15 years experience in training clients. Specializes in muscle building, strength training, and weight loss for all fitness levels. Offers boot camp clases",
     image: "/personal.png", // replace with real path
     email: "Powerbyjen@gmail.com",
   },
