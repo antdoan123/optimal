@@ -65,11 +65,11 @@ export default function Home() {
 
         <meta
           name="keywords"
-          content="Optimal Gym Vineland, gym Vineland NJ, indoor tennis Vineland, racquetball court Vineland, basketball court gym, 24 hour gym Vineland, fitness center Vineland NJ, sauna steam room gym NJ"
+          content="Optimal Gym Vineland, gym Vineland NJ, indoor tennis Vineland, indoor pickleball, racquetball court Vineland, basketball court gym, 24 hour gym Vineland, fitness center Vineland NJ, sauna steam room gym NJ"
         />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="robots" content="index,follow" />
-        <link rel="icon" type="image/png" href="/optimallogo.png" />
+        <link rel="icon" href="/optimallogo.png" />
 
         {/* Open Graph / Social preview */}
         <meta
@@ -81,10 +81,10 @@ export default function Home() {
           content="Full fitness and sports club with free weights, indoor tennis, racquetball, basketball courts, steam room, sauna and more in Vineland, New Jersey."
         />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://your-domain.com" />
+        <meta property="og:url" content="https://www.vinelandoptimalgym.com/" />
         <meta
           property="og:image"
-          content="https://your-domain.com/og-optimal-gym.jpg"
+          content="https://www.vinelandoptimalgym.com/optimallogo.png"
         />
       </Head>
 

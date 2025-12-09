@@ -19,7 +19,7 @@ const MyApp = ({ Component, pageProps }) => {
     
   />
   <link rel="canonical" href="https://www.vinelandoptimalgym.com/" />
-          <link rel="icon" type="image/png" href="/optimallogo.png" />
+          <link rel="icon" href="/optimallogo.png" />
 
 </Head>
 
