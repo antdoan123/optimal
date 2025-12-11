@@ -60,7 +60,7 @@ export default function Home() {
   return (
     <>
       <Head>
-<title>Optimal Gym | 24/7 Gym & Indoor Tennis in South Jersey</title>
+<title>Optimal Gym | 24/7 Gym & Indoor Tennis/Pickleball in South Jersey</title>
 <meta name="description" content="Optimal Gym is Vineland's full-service 24/7 fitness center offering indoor tennis, indoor pickleball, racquetball, basketball courts, sauna, steam room, classes, and more." />
 
         <meta
