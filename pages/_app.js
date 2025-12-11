@@ -12,7 +12,7 @@ const MyApp = ({ Component, pageProps }) => {
   return (
     <>
     <Head>
-  <title>Optimal Gym | 24/7 Fitness & Indoor Tennis in Vineland, NJ</title>
+  <title>Optimal Gym | 24/7 Fitness & Indoor Tennis/Pickleball in South Jersey</title>
   <meta
     name="description"
     content="Optimal Gym is Vineland's 24/7 fitness center offering indoor tennis, racquetball, sauna, pool, weight training, group classes, and more."
