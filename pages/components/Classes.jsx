@@ -44,7 +44,7 @@ const trainers = [
     name: "Jennifer Newton",
     role: "Personal Trainer",
     bio: "NASM certified with 15 years experience in training clients. Specializes in muscle building, strength training, and weight loss for all fitness levels. Offers boot camp classes.",
-    image: "/PTvinland.png",
+    image: "/PTvinland.PNG",
     email: "Powerbyjen@gmail.com",
   },
 ];
