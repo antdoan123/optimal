@@ -6,7 +6,7 @@ import { useState, useEffect } from "react";
 import { parseISO, format } from "date-fns";
 
 const SHEET_URL =
-  "https://api.sheetbest.com/sheets/1187d393-08dc-4e56-9108-21a289b07e85"; // class schedule from Sheet.best
+  "https://api.sheetbest.com/sheets/1187d393-08dc-4e56-9108-21a289b07e85";
 
 const staticClasses = [
   {
@@ -39,20 +39,19 @@ const staticClasses = [
   },
 ];
 
-// TODO: replace with real trainers + images + emails when they send them
 const trainers = [
   {
     name: "Jennifer Newton",
     role: "Personal Trainer",
-    bio: "NASM certified with 15 years experience in training clients. Specializes in muscle building, strength training, and weight loss for all fitness levels. Offers boot camp clases",
-    image: "/personal.png", // replace with real path
+    bio: "NASM certified with 15 years experience in training clients. Specializes in muscle building, strength training, and weight loss for all fitness levels. Offers boot camp classes.",
+    image: "/PTvinland.png",
     email: "Powerbyjen@gmail.com",
   },
-
 ];
 
 export default function Classes() {
   const [scheduleMap, setScheduleMap] = useState({});
+  const [scheduleLoading, setScheduleLoading] = useState(true);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -82,15 +81,20 @@ export default function Classes() {
         setScheduleMap(schedule);
       } catch (error) {
         console.error("Failed to load class schedule:", error);
+      } finally {
+        setScheduleLoading(false);
       }
     };
 
     fetchData();
   }, []);
 
+  const days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
+
   return (
     <section id="classes" className="w-full py-20 bg-white">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
+
         {/* Header */}
         <div className="mb-12 max-w-3xl">
           <h2 className="text-3xl font-bold tracking-wide mb-4 text-gray-900">
@@ -122,12 +126,12 @@ export default function Classes() {
                 />
                 <div className="absolute inset-0 bg-black/30 group-hover:bg-black/40 transition duration-300" />
                 <div className="absolute top-4 right-4">
-                  <span className="px-3 py-1 bg-purple-600 text-white text-xs font-medium rounded-full shadow">
+                  <span className="px-3 py-1 bg-violet-600 text-white text-xs font-medium rounded-full shadow">
                     {classItem.duration}
                   </span>
                 </div>
               </div>
-              <div className="p-5 flex flex-col justify-between h-[240px]">
+              <div className="p-5 flex flex-col justify-between min-h-[240px]">
                 <div>
                   <h3 className="text-lg font-semibold mb-2 text-gray-900">
                     {classItem.name}
@@ -138,9 +142,9 @@ export default function Classes() {
                 </div>
                 <Button
                   variant="outline"
-                  className="mt-4 w-full border-purple-600 text-purple-600 hover:bg-purple-600 hover:text-white"
+                  className="mt-4 w-full border-violet-600 text-violet-600 hover:bg-violet-600 hover:text-white"
                 >
-                  Learn More
+                  View Details
                 </Button>
               </div>
             </motion.div>
@@ -153,65 +157,52 @@ export default function Classes() {
             Weekly Schedule
           </h2>
           <div className="overflow-x-auto">
-            <table className="min-w-full border-collapse border border-gray-200 text-sm">
-              <thead>
-                <tr className="bg-gray-100">
-                  <th className="border border-gray-200 p-2">Time</th>
-                  {[
-                    "Monday",
-                    "Tuesday",
-                    "Wednesday",
-                    "Thursday",
-                    "Friday",
-                    "Saturday",
-                    "Sunday",
-                  ].map((day) => (
-                    <th
-                      key={day}
-                      className="border border-gray-200 p-2 text-center"
-                    >
-                      {day}
-                    </th>
-                  ))}
-                </tr>
-              </thead>
-              <tbody>
-                {Object.keys(scheduleMap)
-                  .sort(
-                    (a, b) =>
-                      new Date(`1970-01-01T${a}`) -
-                      new Date(`1970-01-01T${b}`)
-                  )
-                  .map((time) => (
-                    <tr key={time}>
-                      <td className="border border-gray-200 p-2 font-medium">
-                        {format(
-                          new Date(`1970-01-01T${time}`),
-                          "h:mm a"
-                        )}
-                      </td>
-                      {[
-                        "Monday",
-                        "Tuesday",
-                        "Wednesday",
-                        "Thursday",
-                        "Friday",
-                        "Saturday",
-                        "Sunday",
-                      ].map((day) => (
-                        <td
-                          key={day}
-                          className="border border-gray-200 p-2 text-center text-gray-700"
-                        >
-                          {scheduleMap[time] && scheduleMap[time][day]
-                            ? scheduleMap[time][day]
-                            : "-"}
+            {scheduleLoading ? (
+              /* Loading skeleton */
+              <div className="space-y-3">
+                {[...Array(4)].map((_, i) => (
+                  <div key={i} className="h-10 bg-gray-100 rounded-lg animate-pulse" />
+                ))}
+              </div>
+            ) : Object.keys(scheduleMap).length === 0 ? (
+              <div className="text-center py-12 text-gray-400">
+                <p className="text-lg font-medium">Schedule coming soon</p>
+                <p className="text-sm mt-1">Check back for updated class times.</p>
+              </div>
+            ) : (
+              <table className="min-w-full border-collapse border border-gray-200 text-sm">
+                <thead>
+                  <tr className="bg-gray-100">
+                    <th className="border border-gray-200 p-2">Time</th>
+                    {days.map((day) => (
+                      <th key={day} className="border border-gray-200 p-2 text-center">
+                        {day}
+                      </th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {Object.keys(scheduleMap)
+                    .sort((a, b) => new Date(`1970-01-01T${a}`) - new Date(`1970-01-01T${b}`))
+                    .map((time) => (
+                      <tr key={time}>
+                        <td className="border border-gray-200 p-2 font-medium">
+                          {format(new Date(`1970-01-01T${time}`), "h:mm a")}
                         </td>
-                      ))}
-                    </tr>
-                  ))}
-              </tbody>
-            </table>
+                        {days.map((day) => (
+                          <td key={day} className="border border-gray-200 p-2 text-center text-gray-700">
+                            {scheduleMap[time]?.[day] ? (
+                              <span className="px-2 py-1 bg-violet-50 text-violet-700 rounded-md text-xs font-medium">
+                                {scheduleMap[time][day]}
+                              </span>
+                            ) : "-"}
+                          </td>
+                        ))}
+                      </tr>
+                    ))}
+                </tbody>
+              </table>
+            )}
           </div>
         </div>
 
@@ -228,49 +219,53 @@ export default function Classes() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {trainers.map((trainer, index) => (
-              <motion.div
-                key={trainer.email}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: index * 0.1 }}
-                className="flex flex-col md:flex-row bg-white rounded-xl shadow-lg overflow-hidden border"
-              >
-                <div className="relative w-full md:w-1/3 aspect-[4/3] md:aspect-auto">
-                  <Image
-                    src={trainer.image || "/placeholder.svg"}
-                    alt={trainer.name}
-                    fill
-                    className="object-cover"
-                  />
-                </div>
-                <div className="p-5 flex flex-col justify-between w-full md:w-2/3">
-                  <div>
-                    <h3 className="text-xl font-semibold text-gray-900">
-                      {trainer.name}
-                    </h3>
-                    <p className="text-purple-600 text-sm font-medium mb-2">
-                      {trainer.role}
-                    </p>
-                    <p className="text-gray-600 text-sm">{trainer.bio}</p>
+          {/* Centered single trainer card */}
+          <div className="flex justify-center">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-2xl">
+              {trainers.map((trainer, index) => (
+                <motion.div
+                  key={trainer.email}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.4, delay: index * 0.1 }}
+                  className="flex flex-col md:flex-row bg-white rounded-xl shadow-lg overflow-hidden border hover:shadow-xl transition-shadow duration-300 md:col-span-2"
+                >
+                  <div className="relative w-full md:w-1/3 aspect-[4/3] md:aspect-auto">
+                    <Image
+                      src={trainer.image || "/placeholder.svg"}
+                      alt={trainer.name}
+                      fill
+                      className="object-cover object-[center_30%]"
+                    />
                   </div>
-                  <div className="mt-4">
-                    <Button
-                      className="w-full md:w-auto bg-purple-600 hover:bg-purple-700 text-white"
-                      asChild
-                    >
-                      <a href={`mailto:${trainer.email}`}>
-                        Email {trainer.name.split(" ")[0]} for Private Training
-                      </a>
-                    </Button>
+                  <div className="p-5 flex flex-col justify-between w-full md:w-2/3">
+                    <div>
+                      <h3 className="text-xl font-semibold text-gray-900">
+                        {trainer.name}
+                      </h3>
+                      <p className="text-violet-600 text-sm font-medium mb-2">
+                        {trainer.role}
+                      </p>
+                      <p className="text-gray-600 text-sm">{trainer.bio}</p>
+                    </div>
+                    <div className="mt-4">
+                      <Button
+                        className="w-full md:w-auto bg-violet-600 hover:bg-violet-700 text-white"
+                        asChild
+                      >
+                        <a href={`mailto:${trainer.email}`}>
+                          Email {trainer.name.split(" ")[0]} for Private Training
+                        </a>
+                      </Button>
+                    </div>
                   </div>
-                </div>
-              </motion.div>
-            ))}
+                </motion.div>
+              ))}
+            </div>
           </div>
         </div>
+
       </div>
     </section>
   );
